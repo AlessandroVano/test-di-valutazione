@@ -4,6 +4,7 @@
       <h1 class="text-center">Timing Analysis</h1>
       <!-- speedometer 1 -->
       <div class="circle-all">
+        <div class="cerchio"></div>
         <div>
           <svg class="circle-1">
             <circle
@@ -69,7 +70,7 @@
         </div>
       </div>
       <!-- speedometer 2 -->
-       <div class="circle-all2">
+      <div class="circle-all2">
         <div>
           <svg class="circle-5">
             <circle
@@ -177,9 +178,7 @@ export default {
     .circle-4 {
       position: absolute;
       margin-left: -9px;
-      
     }
- 
   }
   .circle-1 {
     width: 250px;
@@ -192,7 +191,6 @@ export default {
       stroke-dasharray: 209;
       stroke-dashoffset: -206;
       position: absolute;
-    
     }
   }
 
@@ -216,25 +214,24 @@ export default {
       fill: none;
       stroke: green;
       stroke-width: 10px;
-      stroke-dasharray: 587;
-      stroke-dashoffset: -667;
+      stroke-dasharray: 431;
+      stroke-dashoffset: -524;
     }
   }
   .inside-speedometer {
     position: absolute;
     top: 80px;
 
-   
     .span1 {
       font-weight: bold;
       font-size: 30px;
     }
     .span2 {
       font-weight: 600;
-       font-size: 25px;
+      font-size: 25px;
     }
   }
-       .position {
+  .position {
     margin-top: 230px;
     h1 {
       color: rgba(181, 177, 177, 0.655);
@@ -248,7 +245,7 @@ export default {
     }
   }
 
-    .circle-all2 {
+  .circle-all2 {
     position: relative;
     display: flex;
     justify-content: center;
@@ -257,9 +254,7 @@ export default {
     .circle-7 {
       position: absolute;
       margin-left: 38px;
-      
     }
- 
   }
   .circle-5 {
     width: 250px;
@@ -272,7 +267,6 @@ export default {
       stroke-dasharray: 209;
       stroke-dashoffset: -206;
       position: absolute;
-    
     }
   }
 
@@ -304,17 +298,16 @@ export default {
     position: absolute;
     top: 80px;
 
-   
     .span1 {
       font-weight: bold;
       font-size: 30px;
     }
     .span2 {
       font-weight: 600;
-       font-size: 25px;
+      font-size: 25px;
     }
   }
-       .position {
+  .position {
     margin-top: 230px;
     h1 {
       color: rgba(181, 177, 177, 0.655);
@@ -325,9 +318,9 @@ export default {
       font-weight: bold;
       font-size: 40px;
       color: rgb(102, 101, 101);
-   
     }
   }
-
+  .cerchio {
+  }
 }
 </style>

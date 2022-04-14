@@ -70,14 +70,14 @@
           <div class="d-flex">
             <h3 class="card-title">{{ element.title5 }}</h3>
           </div>
-          <div class="d-flex bg-2  px-2">
-            {{ element.span4 }}
+          <div class="d-flex bg-2 mm  px-2">
+            {{ element.span7 }}
           </div>
           <div class="d-flex bg-2 m px-2">
-            {{ element.span5 }}
+            {{ element.span8 }}
           </div>
           <div class="d-flex bg-2 px-2">
-            {{ element.span6 }}
+            {{ element.span9 }}
           </div>
         </div>
       </div>
@@ -171,5 +171,8 @@ export default {
       border-radius: 20px ;
     
     }
+  }
+  .mm {
+    margin-top: -3px;
   }
 </style>
