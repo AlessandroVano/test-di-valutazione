@@ -1,15 +1,10 @@
 <template>
   <div id="app" class="container-fluid">
     <div class="row">
-      <div class="page-1" v-show="view === false">
-        <!-- <div
-          id="page1"
-          ontouchstart="p1handleTouchStart(event)"
-          ontouchmove="p1handleTouchMove(event)"
-          ontouchend="p1handleTouchEnd(event)"
-        >
-        </div> -->
-        <button @click="view = true">click me</button>
+      <div class="page-1" :class="{view : view == false}" >
+      
+      
+        <button class="btn"  @click="view = true">Swipe</button>
           <Status />
 
           <Input />
@@ -25,7 +20,7 @@
           ontouchend="p2handleTouchEnd(event)"
         >
         </div> -->
-        <button @click="view = false">click me</button>
+        <button class="btn" @click="view = false">Swipe</button>
           <Speedometer />
       </div>
     </div>
@@ -49,52 +44,16 @@ export default {
    data() {
         return {
           view : false,
-         /*  p1 : document.getElementById("page1"),
-          p2 = document.getElementById("page2"),
-          startingX = null */
         }
     },
 
- /*  mounted() {
-    let p1 = document.getElementById("page1");
-    let p2 = document.getElementById("page2");
-    let startingX;
-
-    function p1handleTouchStart(evt) {
-      startingX = evt.touches[0].clientX;
-    }
-    function p2handleTouchMove(evt) {
-      let touch = evt.touches[0];
-      let change = startingX - touch.clientX;
-      if (change < 0) {
-        return;
-      }
-      p1.style.left = "-" + change + "px";
-      p2.style.display = "block";
-      p2.style.left = screen.width - change + "px";
-      evt.preventDefault();
-    }
-    function p2handleTouchEnd(evt) {
-      var change = startingX - evt.changedTouches[0].clientX;
-      var threshold = screen.width / 3;
-      if (change < threshold) {
-        p1.style.left = 0;
-        p2.style.left = "100%";
-        p2.style.display = "none";
-      } else {
-        p1.style.transition = "all .3s";
-        p2.style.transition = "all .3s";
-        p1.style.left = "-100%";
-        p2.style.left = "0";
-        p2.style.display = "block";
-      }
-    }
-  }, */
 };
+
 </script>
 
 <style lang="scss">
 #app {
+  
   text-align: center;
   .page-1 {
     position: absolute;
@@ -102,6 +61,12 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
+  /*   opacity: 100%; */
+    transition: all 1s ease-in-out;
+     
+    &.view{
+       height: 0;
+    }
   }
   .swipe { 
     position: absolute;
@@ -110,11 +75,12 @@ export default {
     left: 0;
     width: 100vw;
     height: 0; 
-   /*  background-color:  rgba(0, 0, 0, 0.496); */
-    transition: all .3s ease-in-out;
-    &.view {
+    transition: all 1s ease-in-out;
+       background-color: white;
+  
+     &.view {
       height: 110vh;
-    }
+    } 
   }
 }
 </style>

@@ -1,9 +1,22 @@
 <template>
   <div class="mt-5">
-    <div class="container-2">
+    <div
+      class="container-2"
+      v-for="(element, index) in numb"
+      :key="`id-${index}`"
+    >
       <h1 class="text-center">Timing Analysis</h1>
       <!-- speedometer 1 -->
+      <!--   <span class="span4">{{element.num2}}</span>
+            <span class="span5">{{element.num4}}</span> -->
+
       <div class="circle-all">
+        <div class="position-relative">
+          <span class="number-speedometer1">{{ element.num1 }}</span>
+          <span class="number-speedometer2">{{ element.num2 }}</span>
+            <span class="number-speedometer3">{{ element.num4 }}</span>
+
+        </div>
         <div class="cerchio"></div>
         <div>
           <svg class="circle-1">
@@ -46,20 +59,20 @@
           </svg>
         </div>
         <div>
-          <!--     <svg class="circle-4">
-              <circle
-                cx="130"
-                cy="130"
-                r="100"
-                stroke="black"
-                stroke-width="3"
-                fill="transparent"
-                stroke-linecap="round"
-              />
-            </svg> -->
+          <svg class="circle-4">
+            <circle
+              cx="186"
+              cy="84"
+              r="11"
+              stroke="black"
+              stroke-width="3"
+              fill="transparent"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
         <div class="inside-speedometer">
-          <span class="span1">720</span>
+          <span class="span1">{{ element.num3 }}</span>
           <div>
             <span class="span2"> Great! </span>
           </div>
@@ -71,6 +84,12 @@
       </div>
       <!-- speedometer 2 -->
       <div class="circle-all2">
+            <div class="position-relative">
+          <span class="number-speedometer4">{{ element.num1 }}</span>
+          <span class="number-speedometer5">{{ element.num2 }}</span>
+            <span class="number-speedometer6">{{ element.num4 }}</span>
+
+        </div>
         <div>
           <svg class="circle-5">
             <circle
@@ -112,20 +131,21 @@
           </svg>
         </div>
         <div>
-          <!--     <svg class="circle-4">
-              <circle
-                cx="130"
-                cy="130"
-                r="100"
-                stroke="black"
-                stroke-width="3"
-                fill="transparent"
-                stroke-linecap="round"
-              />
-            </svg> -->
+          <svg class="circle-8">
+            <circle
+              cx="186"
+              cy="84"
+              r="11"
+              stroke="black"
+              stroke-width="3"
+              fill="transparent"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
+       
         <div class="inside-speedometer">
-          <span class="span1">720</span>
+          <span class="span1">{{ element.num3 }}</span>
           <div>
             <span class="span2"> Great! </span>
           </div>
@@ -140,22 +160,30 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Speedometer",
 
-  /* mounted() {
-    let progressCircle = document.querySelector(".circle-2");
-    let radius = progressCircle.r.baseVal.value;
+  data() {
+    return {
+      numb: [],
+    };
+  },
+  created() {
+    this.getNumberRequest();
+  },
 
-    let circumferenze = radius * 2 * Math.PI;
-    progressCircle.style.strokeDasharray = circumferenze;
-
-    setProgress(50);
-
-    function setProgress(percent) {
-     progressCircle.style.strokeDashoffset = circumferenze;
-    }
-  } */
+  methods: {
+    getNumberRequest() {
+      axios
+        .get("http://myjson.dit.upm.es/api/bins/83v9")
+        .then((result) => {
+          console.log(result.data.response);
+          this.numb = result.data.response;
+        })
+        .catch((err) => console.log(err));
+    },
+  },
 };
 </script>
 
@@ -163,6 +191,7 @@ export default {
 .container-2 {
   width: 100%;
   height: 100%;
+
   .text-center {
     color: rgb(125, 125, 125);
     font-weight: 600;
@@ -191,6 +220,7 @@ export default {
       stroke-dasharray: 209;
       stroke-dashoffset: -206;
       position: absolute;
+      z-index: 1;
     }
   }
 
@@ -204,7 +234,7 @@ export default {
       stroke-dasharray: 400;
       stroke-dashoffset: -444;
       position: fixed;
-      z-index: 8;
+      z-index: 2;
     }
   }
   .circle-3 {
@@ -216,6 +246,18 @@ export default {
       stroke-width: 10px;
       stroke-dasharray: 431;
       stroke-dashoffset: -524;
+      z-index: 3;
+    }
+  }
+  .circle-4 {
+    width: 250px;
+    height: 250px;
+
+    circle {
+      fill: none;
+      stroke: green;
+      stroke-width: 5px;
+      z-index: 4;
     }
   }
   .inside-speedometer {
@@ -230,6 +272,24 @@ export default {
       font-weight: 600;
       font-size: 25px;
     }
+  }
+  .number-speedometer1 {
+    position: absolute;
+    font-size: 11px;
+    top: 15px;
+    left: 73px;
+  }
+  .number-speedometer2 {
+    position: absolute;
+    font-size: 11px;
+    top: 47px;
+    left: 179px;
+  }
+   .number-speedometer3 {
+    position: absolute;
+    font-size: 11px;
+    top: 171px;
+    left: 196px;
   }
   .position {
     margin-top: 230px;
@@ -251,7 +311,8 @@ export default {
     justify-content: center;
     .circle-5,
     .circle-6,
-    .circle-7 {
+    .circle-7,
+    .circle-8 {
       position: absolute;
       margin-left: 38px;
     }
@@ -290,8 +351,19 @@ export default {
       fill: none;
       stroke: green;
       stroke-width: 10px;
-      stroke-dasharray: 587;
-      stroke-dashoffset: -667;
+      stroke-dasharray: 431;
+      stroke-dashoffset: -524;
+    }
+  }
+  .circle-8 {
+    width: 250px;
+    height: 250px;
+
+    circle {
+      fill: none;
+      stroke: green;
+      stroke-width: 5px;
+      z-index: 4;
     }
   }
   .inside-speedometer {
@@ -307,6 +379,24 @@ export default {
       font-size: 25px;
     }
   }
+   .number-speedometer4 {
+    position: absolute;
+    font-size: 11px;
+    top: 15px;
+    left: 119px;
+  }
+  .number-speedometer5 {
+    position: absolute;
+    font-size: 11px;
+    top: 47px;
+    left: 222px;
+  }
+   .number-speedometer6 {
+    position: absolute;
+    font-size: 11px;
+    top: 171px;
+    left: 237px;
+  }
   .position {
     margin-top: 230px;
     h1 {
@@ -319,8 +409,6 @@ export default {
       font-size: 40px;
       color: rgb(102, 101, 101);
     }
-  }
-  .cerchio {
   }
 }
 </style>
